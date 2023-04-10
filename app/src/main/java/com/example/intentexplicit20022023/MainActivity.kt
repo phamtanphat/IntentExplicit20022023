@@ -2,6 +2,8 @@ package com.example.intentexplicit20022023
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import kotlin.random.Random
@@ -22,6 +24,18 @@ class MainActivity : AppCompatActivity() {
         imgPick = findViewById(R.id.image_view_pick)
 
         randomImage()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_item_random -> randomImage()
+        }
+        return true
     }
 
     private fun randomImage(){
