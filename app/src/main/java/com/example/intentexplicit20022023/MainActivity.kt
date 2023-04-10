@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,9 +21,14 @@ class MainActivity : AppCompatActivity() {
         imgRandom = findViewById(R.id.image_view_random)
         imgPick = findViewById(R.id.image_view_pick)
 
+        randomImage()
+    }
+
+    private fun randomImage(){
         arrNameAnimals = resources.getStringArray(R.array.array_animal).toList()
-        val nameAnimalIndex0 = arrNameAnimals[1]
-        val imageResource = resources.getIdentifier(nameAnimalIndex0, "drawable", packageName)
+        val indexRandom = Random.nextInt(arrNameAnimals.size)
+        val nameAnimalRandom = arrNameAnimals[indexRandom]
+        val imageResource = resources.getIdentifier(nameAnimalRandom, "drawable", packageName)
         imgRandom.setImageResource(imageResource)
     }
 }
