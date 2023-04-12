@@ -1,5 +1,6 @@
 package com.example.intentexplicit20022023
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -24,6 +25,14 @@ class MainActivity : AppCompatActivity() {
         imgPick = findViewById(R.id.image_view_pick)
 
         randomImage()
+        eventView()
+    }
+
+    private fun eventView() {
+        imgPick.setOnClickListener {
+            val intent = Intent(this@MainActivity, ListAnimalActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
