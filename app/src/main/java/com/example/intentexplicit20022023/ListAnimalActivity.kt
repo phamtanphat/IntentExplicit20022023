@@ -1,10 +1,12 @@
 package com.example.intentexplicit20022023
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TableLayout
 import android.widget.TableRow
+import androidx.appcompat.app.AppCompatActivity
 import kotlin.math.ceil
 
 class ListAnimalActivity : AppCompatActivity() {
@@ -26,10 +28,15 @@ class ListAnimalActivity : AppCompatActivity() {
         if (arrNameAnimals.isNotEmpty()) {
             Loop1@for (row in 0 until totalRow) {
                 val tableRow = TableRow(this)
+                val tableLayoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+                tableLayoutParams.marginStart = 15
+                tableLayout.layoutParams = tableLayoutParams
                 for (column in 0 until totalColumn) {
                     val index = ((totalColumn * row) + column)
                     if (index >= arrNameAnimals.size) break@Loop1
                     val image = ImageView(this)
+                    val layoutParams: TableRow.LayoutParams = TableRow.LayoutParams(350, 350)
+                    image.layoutParams = layoutParams
                     val nameAnimal = arrNameAnimals[index]
                     val imageResource = resources.getIdentifier(nameAnimal, "drawable", packageName)
                     image.setImageResource(imageResource)
